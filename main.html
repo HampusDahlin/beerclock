@@ -10,6 +10,7 @@
 }
 </style>
 <script>
+
 function startTime() {
 	var today=new Date();
 
@@ -18,12 +19,14 @@ function startTime() {
 	var s = 60 - today.getSeconds();
 
 
-	if(today.getHours() < 17){
+	if(today.getHours() < 17 && today.getHours() > 5){
 		h = 17 - today.getHours();
+		document.getElementById('addition').innerHTML = "Till &oslash;hl";
 	}else{
-		h = 0;
+		h = 1;
 		m = 1;
 		s = 1;
+		document.getElementById('addition').innerHTML = "Dags för &oslash;hl";	
 	}
 
 
@@ -31,36 +34,29 @@ function startTime() {
 		h = h-1;
 	}
 
-
-	if(h < 10){
-		var stringH = "0" + h;
-	}else{
-		var stringH = "" + h;
-	}
-
-	if(m < 10){
-		var stringM = "0" + (m-1);
-	}else{
-		var stringM = "" + (m-1);
-	}
-
-	if(s < 11){
-		var stringS = "0" + (s-1);
-	}else{
-		var stringS = "" + (s-1);
-	}
+	var stringH = getTimeString(h);
+	var stringM = getTimeString(m-1);
+	var stringS = getTimeString(s-1);
 
 	document.getElementById('txt').innerHTML = stringH+":"+stringM+":"+stringS;
 	var t = setTimeout(function(){startTime()},500);
 }
 
+function getTimeString(time){
+	if(time < 11){
+		return "0" + time;
+	}else{
+		return "" + time;
+	}
+}
+
 </script>
 </head>
 
-<body onload="startTime()" bgcolor=#09cdda>
+<body onload="startTime()" background="beer_foam.jpg">
 <div id="main" height:100% width:100%>
 	<div id="txt" class="center" style="font-size: 25vw;"></div>
-	<div id="addition" class="center" style="font-size: 10vw;">till Bärs</div>
+	<div id="addition" class="center" style="font-size: 10vw;"></div>
 </div>
 </body>
 </html>
