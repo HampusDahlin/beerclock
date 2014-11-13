@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title> &oslash;hltajm!</title>
 <style>
 .center {
 	margin-left: auto;
@@ -18,12 +19,14 @@ function startTime() {
 	var s = 60 - today.getSeconds();
 
 
-	if(today.getHours() < 17){
+	if(today.getHours() < 17 && today.getHours() > 5){
 		h = 17 - today.getHours();
+		document.getElementById('addition').innerHTML = "Till &oslash;hl";
 	}else{
 		h = 0;
 		m = 1;
 		s = 1;
+		document.getElementById('addition').innerHTML = "Dags för &oslash;hl";	
 	}
 
 
@@ -38,7 +41,7 @@ function startTime() {
 		var stringH = "" + h;
 	}
 
-	if(m < 10){
+	if(m < 11){
 		var stringM = "0" + (m-1);
 	}else{
 		var stringM = "" + (m-1);
@@ -57,10 +60,10 @@ function startTime() {
 </script>
 </head>
 
-<body onload="startTime()" bgcolor=#09cdda>
-<div id="main" height:100% width:100%>
+<body onload="startTime()">
+<div id="main" height:100% width:100% style="background-image:url('beer_foam.jpg');">
 	<div id="txt" class="center" style="font-size: 25vw;"></div>
-	<div id="addition" class="center" style="font-size: 10vw;">till Bärs</div>
+	<div id="addition" class="center" style="font-size: 10vw;"></div>
 </div>
 </body>
 </html>
